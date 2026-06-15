@@ -78,6 +78,16 @@ No build, no dependencies.
 
 ---
 
+## Chrome Web Store
+
+Stax is packaged and ready to submit. The upload ZIP is attached to the
+[latest release](https://github.com/StarkAg/stax/releases/latest), store screenshots and promo
+tiles live in [`store/assets/`](store/assets), and the full copy-paste listing (description,
+single-purpose statement, permission justifications, data disclosures) is in
+[`store/STORE_LISTING.md`](store/STORE_LISTING.md). Privacy policy: [`PRIVACY.md`](PRIVACY.md).
+
+---
+
 ## How it works
 
 | Piece | Role |

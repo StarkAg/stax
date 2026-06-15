@@ -23,5 +23,7 @@
   },
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "minimum_chrome_version": "102",
+  "homepage_url": "https://github.com/StarkAg/stax"
 }
