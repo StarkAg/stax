@@ -88,11 +88,13 @@ other page data and sends nothing off-device.
 ```
 
 ## Data usage disclosures (Privacy practices tab)
-- Does this item collect personally identifiable information? **No**
-- Health info? **No** · Financial info? **No** · Authentication info? **No**
-- Personal communications? **No** · Location? **No** · Web history? **No** (only tab titles/URLs
-  shown to the user locally; never transmitted)
-- User activity / website content? **No** (not collected or sent)
+- **Web history — YES.** Stax reads open-tab URLs/titles and caches watched-video URLs locally,
+  which fits Google's "web history" definition. Disclose it (it is stored locally and never
+  transmitted, but it must still be declared).
+- PII? **No** · Health? **No** · Financial? **No** · Authentication? **No**
+- Personal communications? **No** · Location? **No**
+- User activity? **No** · Website content? **No** (the video play position read for watched
+  detection is a transient number, not collected page content)
 - Certify: does **not** sell data, does **not** use data for unrelated purposes, does **not** use
   data for creditworthiness. **All three checked.**
 
