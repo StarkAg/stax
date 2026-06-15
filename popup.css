@@ -1,0 +1,165 @@
+/* Stax popup — GradeX design language (compact) */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('fonts/space-grotesk/SpaceGrotesk-400.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('fonts/space-grotesk/SpaceGrotesk-500.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('fonts/space-grotesk/SpaceGrotesk-600.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'AmericanCaptain';
+  src: url('fonts/american-captain/AmericanCaptain-MdEY.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('fonts/jetbrains-mono/JetBrainsMono-500.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('fonts/jetbrains-mono/JetBrainsMono-700.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+:root {
+  --font-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-brand: 'AmericanCaptain', 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  --bg: #080808;
+  --bg-2: #0d0d0d;
+  --bg-3: #161616;
+  --text: #f5f5f5;
+  --muted: rgba(245, 245, 245, 0.5);
+  --faint: rgba(245, 245, 245, 0.35);
+  --line: rgba(245, 245, 245, 0.12);
+  --line-hover: rgba(245, 245, 245, 0.3);
+  --hover: rgba(245, 245, 245, 0.06);
+  --accent: #f5f5f5;
+  --accent-ink: #080808;
+  --green: #4ade80;
+  --green-bg: rgba(74, 222, 128, 0.1);
+  --green-border: rgba(74, 222, 128, 0.3);
+  --red: #ff6b6b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  width: 300px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    var(--bg);
+  background-size: 30px 30px, 30px 30px, 100% 100%;
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.pop { padding: 16px; }
+
+/* Header */
+.pop-head { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; }
+.pop-head .logo {
+  display: grid; place-items: center;
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  background: var(--accent); color: var(--accent-ink);
+  font-size: 16px;
+  box-shadow: 0 0 14px rgba(245, 245, 245, 0.22);
+}
+.pop-head h1 {
+  font-family: var(--font-brand);
+  font-size: 24px; font-weight: 400; margin: 0;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  line-height: 1; position: relative; top: 2px;
+}
+.pop-head .tag {
+  margin-left: auto;
+  font-size: 9.5px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--faint);
+}
+
+/* Stats */
+.stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+  margin-bottom: 14px;
+}
+.stat {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 11px 6px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+}
+.stat .num {
+  font-family: var(--font-mono); font-weight: 700; font-size: 22px;
+  line-height: 1;
+}
+.stat .num.watched { color: var(--green); }
+.stat .lbl {
+  font-size: 9.5px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--muted);
+}
+
+/* Actions */
+.actions { display: flex; flex-direction: column; gap: 8px; }
+.btn {
+  display: flex; align-items: center; gap: 9px;
+  width: 100%;
+  padding: 11px 13px;
+  background: var(--hover);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 13.5px; font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+.btn .bi { width: 16px; text-align: center; opacity: 0.85; }
+.btn .cnt {
+  margin-left: auto;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  color: var(--muted);
+  background: var(--bg); border: 1px solid var(--line);
+  border-radius: 999px; padding: 1px 8px; min-width: 22px; text-align: center;
+}
+.btn:hover:not(:disabled) { border-color: var(--line-hover); background: rgba(245, 245, 245, 0.1); }
+.btn:active:not(:disabled) { transform: scale(0.985); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); box-shadow: 0 0 14px rgba(245, 245, 245, 0.16); }
+.btn.primary:hover { background: #fff; }
+.btn.primary .bi { opacity: 1; }
+
+.btn.watched-btn { color: var(--green); }
+.btn.watched-btn:not(:disabled) { border-color: var(--green-border); }
+.btn.watched-btn:hover:not(:disabled) { background: var(--green-bg); }
+.btn.watched-btn .cnt { color: var(--green); border-color: var(--green-border); }
+
+/* Status + hint */
+.status {
+  margin: 12px 0 0; padding: 9px 11px;
+  background: var(--green-bg); border: 1px solid var(--green-border);
+  border-radius: 9px; color: var(--green);
+  font-size: 12px; font-weight: 600; text-align: center;
+}
+.hint {
+  margin: 12px 2px 0; text-align: center;
+  font-size: 11px; color: var(--faint);
+}
+.hidden { display: none !important; }

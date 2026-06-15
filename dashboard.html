@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stax</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">⊟</span>
+      <h1>Stax</h1>
+    </div>
+
+    <div class="search">
+      <input id="search" type="search" placeholder="Search tabs &amp; saved links…  ( / )" autocomplete="off" />
+    </div>
+
+    <nav class="views">
+      <button class="view-btn active" data-view="open">
+        Open tabs <span class="badge" id="open-count">0</span>
+      </button>
+      <button class="view-btn" data-view="saved">
+        Saved <span class="badge" id="saved-count">0</span>
+      </button>
+      <button class="view-btn" data-view="watched">
+        Watched <span class="badge" id="watched-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- OPEN TABS VIEW -->
+  <main id="view-open" class="view">
+    <div class="actionbar">
+      <label class="checkall">
+        <input type="checkbox" id="select-all" />
+        <span id="selection-label">Select all</span>
+      </label>
+      <button class="btn watched-btn" id="select-watched" title="Select every YouTube video you've already watched (≥90% played)" disabled>✓ Select watched</button>
+      <div class="spacer"></div>
+      <button class="btn" id="group-toggle" title="Group tabs by website">Grouped by site</button>
+      <div class="sep"></div>
+      <button class="btn ghost" id="close-selected" disabled>Close</button>
+      <button class="btn" id="save-selected" disabled>Save</button>
+      <button class="btn primary" id="save-close-selected" disabled>Save &amp; Close</button>
+    </div>
+    <div id="tab-list" class="list"></div>
+    <div id="open-empty" class="empty hidden">No tabs match your search.</div>
+  </main>
+
+  <!-- SAVED VIEW -->
+  <main id="view-saved" class="view hidden">
+    <div class="actionbar">
+      <span class="muted" id="saved-summary">No saved lists yet.</span>
+      <div class="spacer"></div>
+      <button class="btn" id="export-btn" title="Download all saved lists as JSON">Export</button>
+      <button class="btn ghost danger" id="clear-saved" title="Delete every saved list">Clear all</button>
+    </div>
+    <div id="collections" class="collections"></div>
+    <div id="saved-empty" class="empty hidden">
+      <p>Nothing saved yet.</p>
+      <p class="muted">Select some open tabs and hit <b>Save &amp; Close</b> — they'll show up here.</p>
+    </div>
+  </main>
+
+  <!-- WATCHED HISTORY VIEW -->
+  <main id="view-watched" class="view hidden">
+    <div class="actionbar">
+      <span class="muted" id="watched-summary">No watched videos yet.</span>
+      <div class="spacer"></div>
+      <button class="btn ghost danger" id="clear-watched-history" title="Forget all watched videos (re-opening them won't warn anymore)">Clear history</button>
+    </div>
+    <p class="view-note" id="watched-note">
+      🔒 Videos you've finished are kept here. Stax warns before letting you reopen one.
+    </p>
+    <div id="watched-list" class="collections"></div>
+    <div id="watched-empty" class="empty hidden">
+      <p>No finished videos yet.</p>
+      <p class="muted">When you watch a YouTube video to ≥90%, it lands here so you don't reopen it by accident.</p>
+    </div>
+  </main>
+
+  <!-- Confirm / warning modal -->
+  <div id="modal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-icon" id="modal-icon">⚠</div>
+      <h2 id="modal-title">Already watched</h2>
+      <p id="modal-msg"></p>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden">
+    <span id="toast-msg"></span>
+    <button id="toast-undo" class="toast-undo hidden">Undo</button>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

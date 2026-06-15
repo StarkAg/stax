@@ -1,0 +1,5 @@
+.DS_Store
+.shots/
+.claude/
+*.zip
+node_modules/

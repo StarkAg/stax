@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="pop">
+    <header class="pop-head">
+      <span class="logo">⊟</span>
+      <h1>Stax</h1>
+      <span class="tag" id="tagline">tab triage</span>
+    </header>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="num" id="s-open">—</span>
+        <span class="lbl">open tabs</span>
+      </div>
+      <div class="stat">
+        <span class="num watched" id="s-watched">—</span>
+        <span class="lbl">watched</span>
+      </div>
+      <div class="stat">
+        <span class="num" id="s-saved">—</span>
+        <span class="lbl">saved</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn watched-btn" id="clear-watched" disabled>
+        <span class="bi">✓</span> Clear watched
+        <span class="cnt" id="c-watched"></span>
+      </button>
+      <button class="btn" id="save-all" disabled>
+        <span class="bi">▦</span> Save all open
+        <span class="cnt" id="c-open"></span>
+      </button>
+      <button class="btn primary" id="open-dash">
+        <span class="bi">⤢</span> Open dashboard
+      </button>
+    </div>
+
+    <p class="status hidden" id="status"></p>
+    <p class="hint" id="hint">Scanning your YouTube tabs…</p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
