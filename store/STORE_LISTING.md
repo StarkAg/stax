@@ -80,11 +80,20 @@ Used to read the play position of YouTube videos (to mark watched videos and sho
 to display the "already open in another tab" banner. No page content is collected or transmitted.
 ```
 
-**host permission `<all_urls>`**
+**host permission `*://*.youtube.com/*`** (the only required host)
 ```
-Required so the duplicate-tab banner can appear on any site the user opens, and so YouTube watch
-progress can be read on youtube.com. Access is used only for these two features; Stax reads no
-other page data and sends nothing off-device.
+Required to read the play position of YouTube videos (the video element's current time) so Stax
+can mark videos as watched and show live progress, and to show the duplicate-tab banner on
+youtube.com. Access is used only for these features and no page data leaves the device.
+```
+
+**Optional host permission `<all_urls>`** (requested at runtime, not required)
+```
+<all_urls> is declared as an OPTIONAL permission and is NOT requested on install. The user can
+turn it on from the popup ("Enable on all sites") to extend the duplicate-tab banner to non-
+YouTube sites. Until the user grants it, Stax only acts on youtube.com. It is requested via
+chrome.permissions.request() in response to a user click, used solely for the duplicate banner,
+and transmits nothing.
 ```
 
 ## Data usage disclosures (Privacy practices tab)

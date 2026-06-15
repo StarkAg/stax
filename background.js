@@ -78,9 +78,23 @@ async function checkDuplicate(tabId, url) {
   }
 }
 
+// The cross-site duplicate banner needs <all_urls>, which is an OPTIONAL
+// permission the user can turn on. YouTube duplicates always work because
+// youtube.com is a required host. Track the grant so we only act when allowed.
+let allowAllSites = false;
+chrome.permissions.contains({ origins: ["<all_urls>"] }, (r) => { allowAllSites = !!r; });
+chrome.permissions.onAdded.addListener((p) => {
+  if (p.origins && p.origins.includes("<all_urls>")) allowAllSites = true;
+});
+chrome.permissions.onRemoved.addListener((p) => {
+  if (p.origins && p.origins.includes("<all_urls>")) allowAllSites = false;
+});
+
+const isYouTubeUrl = (u) => u.includes("youtube.com") || u.includes("youtu.be");
+
 chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
   if (info.status === "complete" && tab.url && /^https?:/.test(tab.url)) {
-    checkDuplicate(tabId, tab.url);
+    if (isYouTubeUrl(tab.url) || allowAllSites) checkDuplicate(tabId, tab.url);
   }
 });
 

@@ -23,11 +23,15 @@ history") or by removing the extension.
 - **Tabs** (`tabs`) — to list your open tabs and their titles/URLs so you can search, group,
   save, switch to, or close them.
 - **Storage** (`storage`) — to keep your saved lists and watched history on your device.
-- **Scripting + host access** (`scripting`, `<all_urls>`) — used for exactly two things:
+- **Scripting + YouTube host access** (`scripting`, `*://*.youtube.com/*`) — used for exactly two
+  things:
   1. Reading the play position of YouTube videos (the `<video>` element's current time) to tag
      watched videos and show live progress.
   2. Showing the "already open in another tab" banner on a page that duplicates one you already
      have open.
+- **Optional all-sites access** (`<all_urls>`, off by default) — only requested if you turn on
+  "Enable on all sites" in the popup, which extends the duplicate-tab banner to non-YouTube
+  sites. You can revoke it anytime. It is used solely for that banner and transmits nothing.
 
   Stax does not read page content, form data, passwords, or browsing history beyond the tab
   titles and URLs needed for the features above, and none of it is transmitted anywhere.

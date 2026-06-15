@@ -168,8 +168,39 @@ async function refresh() {
   render();          // fill watched count
 }
 
+/* ---------- all-sites duplicate catcher (optional permission) ---------- */
+async function refreshAllSites() {
+  const granted = await chrome.permissions.contains({ origins: ["<all_urls>"] });
+  const state = $("#as-state");
+  const btn = $("#as-btn");
+  if (granted) {
+    state.textContent = "On — every site";
+    btn.textContent = "Turn off";
+    btn.classList.add("on");
+  } else {
+    state.textContent = "YouTube only";
+    btn.textContent = "Enable on all sites";
+    btn.classList.remove("on");
+  }
+}
+
+$("#as-btn").addEventListener("click", async () => {
+  const granted = await chrome.permissions.contains({ origins: ["<all_urls>"] });
+  if (granted) {
+    await chrome.permissions.remove({ origins: ["<all_urls>"] });
+  } else {
+    try {
+      await chrome.permissions.request({ origins: ["<all_urls>"] });
+    } catch (e) {
+      /* user dismissed the prompt */
+    }
+  }
+  refreshAllSites();
+});
+
 $("#open-dash").addEventListener("click", openDashboard);
 $("#clear-watched").addEventListener("click", clearWatched);
 $("#save-all").addEventListener("click", saveAllOpen);
 
+refreshAllSites();
 refresh();

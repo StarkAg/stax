@@ -126,8 +126,10 @@ lists and watched history live in `chrome.storage.local`.
 **Permissions:**
 - `tabs` — read tab titles/URLs and open/close/switch tabs.
 - `storage` — save your lists and watched history locally.
-- `scripting` + `<all_urls>` — read YouTube play position and show the duplicate-tab banner on
-  any site. Used only for those two things; nothing is sent anywhere.
+- `scripting` + `youtube.com` host — read YouTube play position and show the duplicate banner on
+  YouTube. Used only for those two things; nothing is sent anywhere.
+- `<all_urls>` — **optional, off by default.** Enable "all sites" from the popup to extend the
+  duplicate-tab banner beyond YouTube. Revocable anytime.
 
 ---
 

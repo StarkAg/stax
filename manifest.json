@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "description": "Triage 100+ tabs from one page. Auto-detect watched YouTube videos, save the rest, and catch duplicate tabs before they pile up.",
   "permissions": ["tabs", "storage", "scripting"],
-  "host_permissions": ["<all_urls>"],
+  "host_permissions": ["*://*.youtube.com/*"],
+  "optional_host_permissions": ["<all_urls>"],
   "action": {
     "default_title": "Open Stax",
     "default_popup": "popup.html",
