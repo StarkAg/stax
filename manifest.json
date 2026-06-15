@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Stax — Easy Tab Manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Triage 100+ tabs from one page. Auto-detect watched YouTube videos, save the rest, and catch duplicate tabs before they pile up.",
   "permissions": ["tabs", "storage", "scripting"],
   "host_permissions": ["*://*.youtube.com/*"],

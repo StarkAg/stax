@@ -1,6 +1,6 @@
 # Chrome Web Store — submission checklist & copy
 
-Everything you need to paste into the Web Store Developer Dashboard. Upload `build/stax-1.0.0.zip`
+Everything you need to paste into the Web Store Developer Dashboard. Upload `build/stax-1.0.1.zip`
 under **Package**, then fill the listing with the text below.
 
 ---
@@ -121,7 +121,7 @@ https://github.com/StarkAg/stax/blob/main/PRIVACY.md
 - Store icon: `icons/icon128.png` (128×128)
 
 ## Pre-submit checks
-- [x] Manifest V3, valid, version 1.0.0
+- [x] Manifest V3, valid, version 1.0.1
 - [x] 128×128 icon present
 - [x] No remote code / no minified obfuscation / all code bundled
 - [x] At least one 1280×800 screenshot
